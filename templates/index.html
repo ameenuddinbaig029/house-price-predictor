@@ -1,21 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>House Price Prediction</title>
+    <meta charset="UTF-8">
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>Enter House Details</h2>
+    <h1>Predict House Price</h1>
     <form action="/predict" method="post">
-        Longitude: <input type="text" name="longitude"><br>
-        Latitude: <input type="text" name="latitude"><br>
-        Housing Median Age: <input type="text" name="housing_median_age"><br>
-        Total Rooms: <input type="text" name="total_rooms"><br>
-        Total Bedrooms: <input type="text" name="total_bedrooms"><br>
-        Population: <input type="text" name="population"><br>
-        Households: <input type="text" name="households"><br>
-        Median Income: <input type="text" name="median_income"><br>
-        Ocean Proximity (0-4): <input type="text" name="ocean_proximity"><br>
+        <label>Number of Rooms:</label>
+        <input type="text" name="rooms"><br>
+
+        <label>Area (sq ft):</label>
+        <input type="text" name="area"><br>
+
+        <label>Location Quality (1-10):</label>
+        <input type="text" name="location_quality"><br>
+        <label>Longitude:</label>
+        <input type="text" name="longitude"><br>
+
+
         <input type="submit" value="Predict">
     </form>
+
+    {% if prediction %}
+        <h2>Predicted Price: ${{ prediction }}</h2>
+    {% endif %}
 </body>
 </html>
